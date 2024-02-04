@@ -10,5 +10,7 @@ func main() {
   ans := utils.Menu()
   if ans == "1\n" {
     views.Signup()
+  } else if ans == "2\n" {
+    views.Signin()
   }
 }
