@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import "github.com/Abdirahman04/novatrust/pkg/views"
+
+
 
 func main() {
-  fmt.Println("Hello")
+  views.Homepage()
 }
