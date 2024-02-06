@@ -1,17 +1,28 @@
 package db
 
-import "github.com/Abdirahman04/novatrust/pkg/model"
+import (
+	"context"
+	"fmt"
+	"log"
 
+	"github.com/Abdirahman04/novatrust/pkg/model"
+)
 
+func AddCustomer(customer model.Customer) string {
+  client, err := Connect()
 
-func SaveCustomer(customer *model.Customer) {
-  
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  collection := client.Database("novatrust").Collection("customers")
+
+  insertResult, err := collection.InsertOne(context.TODO(), customer)
+
+  if err != nil {
+    log.Fatal(err)
+    return fmt.Sprintln(err)
+  }
+
+  return fmt.Sprintln("Inserted a single document,", insertResult.InsertedID)
 }
-
-//func FindCustomer(customerId string) *model.Customer {}
-
-//func FindAllCustomers() *[]model.Customer {}
-
-//func UpdateCustomer(customer *model.Customer) {}
-
-//func DeleteCustomer(customerId string) {}

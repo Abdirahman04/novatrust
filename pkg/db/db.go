@@ -15,17 +15,18 @@ func Connect() (*mongo.Client, error) {
 
   if err != nil {
     log.Fatal(err)
+    return nil, err
   }
 
   err = client.Ping(context.TODO(), nil)
 
   if err != nil {
     log.Fatal(err)
+    return nil, err
   }
 
   return client, nil
 }
-
 func Disconnect(client *mongo.Client) error {
   if client != nil {
     err := client.Disconnect(context.Background())
