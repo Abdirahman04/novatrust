@@ -10,3 +10,7 @@ type Customer struct {
   Password string
   DOC time.Time
 }
+
+func FullName(customer Customer) string {
+  return customer.FirstName + " " + customer.LastName
+}

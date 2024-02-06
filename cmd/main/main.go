@@ -1,11 +1,13 @@
 package main
 
 import (
+	"github.com/Abdirahman04/novatrust/pkg/db"
 	"github.com/Abdirahman04/novatrust/pkg/utils"
 	"github.com/Abdirahman04/novatrust/pkg/views"
 )
 
 func main() {
+  db.Connect()
   exit := false
   for !exit {
     views.Homepage()

@@ -7,9 +7,10 @@ import (
   "fmt"
 )
 
-func Menu() string {
+var p = fmt.Print
+
+func input() string {
   reader := bufio.NewReader(os.Stdin)
-  fmt.Print(">>>>> ")
   name, err := reader.ReadString('\n')
 
   if err != nil {
@@ -17,4 +18,14 @@ func Menu() string {
   }
 
   return name
+}
+
+func Menu() string {
+  p(">>>>> ")
+  return input()
+}
+
+func Form(txt string) string {
+  p("...", txt, ":   ")
+  return input()
 }
