@@ -1,9 +1,12 @@
 package views
 
 import (
+	"fmt"
+	"log"
 	"time"
 
 	"github.com/Abdirahman04/novatrust/pkg/model"
+	"github.com/Abdirahman04/novatrust/pkg/service"
 	"github.com/Abdirahman04/novatrust/pkg/styles"
 	"github.com/Abdirahman04/novatrust/pkg/utils"
 )
@@ -18,6 +21,14 @@ func Signup() {
   pass := utils.Form("Password")
 
   customer := model.Customer{CustomerId: id, FirstName: fname, LastName: lname, Email: email, Password: pass, DOC: time.Now()}
+  res, err := service.SaveCustomer(customer)
+
+  if err != nil {
+    log.Fatal(err)
+    fmt.Println("Unable to add customer!")
+  }
+
+  fmt.Println(res)
   
   Dashboard(customer)
 }

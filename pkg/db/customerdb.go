@@ -8,11 +8,12 @@ import (
 	"github.com/Abdirahman04/novatrust/pkg/model"
 )
 
-func AddCustomer(customer model.Customer) string {
+func AddCustomer(customer model.Customer) (string, error) {
   client, err := Connect()
 
   if err != nil {
     log.Fatal(err)
+    return "", err
   }
 
   collection := client.Database("novatrust").Collection("customers")
@@ -21,8 +22,9 @@ func AddCustomer(customer model.Customer) string {
 
   if err != nil {
     log.Fatal(err)
-    return fmt.Sprintln(err)
+    return "", err
   }
 
-  return fmt.Sprintln("Inserted a single document,", insertResult.InsertedID)
+  msg := fmt.Sprintln("Inserted a single document,", insertResult.InsertedID)
+  return msg, nil
 }
