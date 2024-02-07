@@ -13,13 +13,13 @@ func main() {
     views.Homepage()
 
     ans := utils.Menu()
-    if ans == "1\n" {
+    if ans == "1" {
       views.Signup()
-    } else if ans == "2\n" {
+    } else if ans == "2" {
       views.Signin()
-    } else if ans == "3\n" {
+    } else if ans == "3" {
       views.Help()
-    } else if ans == "4\n" {
+    } else if ans == "4" {
       exit = true
     }
   }

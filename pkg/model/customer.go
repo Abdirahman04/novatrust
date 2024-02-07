@@ -1,6 +1,9 @@
 package model
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Customer struct {
   CustomerId string
@@ -12,5 +15,5 @@ type Customer struct {
 }
 
 func FullName(customer Customer) string {
-  return customer.FirstName + " " + customer.LastName
+  return fmt.Sprintf("%s %s", customer.FirstName, customer.LastName) 
 }

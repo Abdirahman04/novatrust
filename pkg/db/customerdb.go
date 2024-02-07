@@ -25,6 +25,8 @@ func AddCustomer(customer model.Customer) (string, error) {
     return "", err
   }
 
-  msg := fmt.Sprintln("Inserted a single document,", insertResult.InsertedID)
-  return msg, nil
+  Disconnect(client)
+
+  id := fmt.Sprintln(insertResult.InsertedID)
+  return id, nil
 }
